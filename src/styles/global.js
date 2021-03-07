@@ -11,4 +11,8 @@ export default createGlobalStyle`
     color: ${({ theme }) => theme.colors.text};
     font: 400 16px Roboto, sans-serif;
   }
+
+  ul{
+    list-style: none;
+  }
 `;
