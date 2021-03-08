@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Cards from '../components/Cards';
 import { Container } from '../styles/components/Container';
-import { Form, Title } from '../styles/pages/Home';
+import { Form, LoadMoreButton, Logo, Title } from '../styles/pages/Home';
 
 //futuramaapi.herokuapp.com/api/v2/characters/?page=21
 const defaultEndPoint = `http://futuramaapi.herokuapp.com/api/v2/characters`;
@@ -65,7 +65,12 @@ export default function Home({ data = [] }) {
       </Head>
 
       <Container>
-        <Title>Futurama Wiki</Title>
+        <Logo>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Futurama_1999_logo.svg/2000px-Futurama_1999_logo.svg.png"
+            alt="futurama"
+          />
+        </Logo>
 
         <Form onSubmit={handleSubmit}>
           <input type="search" name="query" />
@@ -73,7 +78,7 @@ export default function Home({ data = [] }) {
         </Form>
 
         <Cards data={results} />
-        <button onClick={handleLoadMore}>Load more</button>
+        <LoadMoreButton onClick={handleLoadMore}>Load more</LoadMoreButton>
       </Container>
     </div>
   );

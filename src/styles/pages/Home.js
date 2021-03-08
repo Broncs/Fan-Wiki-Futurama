@@ -10,6 +10,14 @@ export const Title = styled.h1`
   }
 `;
 
+export const Logo = styled.div`
+  img {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1rem;
+  }
+`;
+
 export const Form = styled.form`
   input {
     margin-right: 0.5rem;
@@ -29,5 +37,17 @@ export const Form = styled.form`
     button {
       width: 100%;
     }
+  }
+`;
+
+export const LoadMoreButton = styled.button`
+  padding: 0.5rem 1rem;
+  background-color: orange;
+  margin: 3rem 0;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background-color: orangered;
   }
 `;

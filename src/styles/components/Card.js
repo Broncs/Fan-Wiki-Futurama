@@ -3,12 +3,15 @@ import styled from 'styled-components';
 export const CardItem = styled.li`
   background-color: #fff;
   border-radius: 5px;
-  margin: 1rem;
+
   max-width: 300px;
   box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.05);
 
   &:hover {
     border: 1px solid black;
+  }
+  @media (max-width: 614px) {
+    margin: 0 auto;
   }
 `;
 
