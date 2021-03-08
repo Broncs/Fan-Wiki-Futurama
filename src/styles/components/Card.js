@@ -5,9 +5,21 @@ export const CardItem = styled.li`
   border-radius: 5px;
   margin: 1rem;
   max-width: 300px;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    border: 1px solid black;
+  }
+`;
+
+export const CardLink = styled.a`
+  color: #333;
+  text-decoration: none;
   display: flex;
-  flex-direction: column;
+  height: 100%;
   justify-content: space-between;
+  flex-direction: column;
+  cursor: pointer;
 `;
 
 export const CardImg = styled.img`

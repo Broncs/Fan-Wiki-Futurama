@@ -33,6 +33,9 @@ export default function Home({ data = [] }) {
     const { currentTarget = {} } = e;
     const fields = Array.from(currentTarget?.elements);
     const fieldQuery = fields.find((field) => field.name === 'query');
+    if (fieldQuery.value === '') {
+      return;
+    }
 
     const value = fieldQuery.value || '';
     const endpoint = `https://futuramaapi.herokuapp.com/api/v2/characters?search=${value}`;

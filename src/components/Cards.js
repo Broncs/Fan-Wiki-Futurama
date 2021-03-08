@@ -4,8 +4,8 @@ import { CardsWrapper } from '../styles/components/Cards';
 const Cards = ({ data }) => {
   return (
     <CardsWrapper>
-      {data.map((char) => {
-        return <Card key={char.Name} {...char} />;
+      {data.map((char, index) => {
+        return <Card key={`${char.Name}__${index}`} {...char} />;
       })}
     </CardsWrapper>
   );

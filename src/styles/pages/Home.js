@@ -3,6 +3,11 @@ import styled from 'styled-components';
 export const Title = styled.h1`
   font-size: 3rem;
   padding: 2rem 0;
+
+  @media (max-width: 600px) {
+    font-size: 2rem;
+    padding: 1rem 0;
+  }
 `;
 
 export const Form = styled.form`
