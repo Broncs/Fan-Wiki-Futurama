@@ -20,7 +20,7 @@ export async function getServerSideProps() {
 
 export default function Home({ data = [] }) {
   const [results, setResults] = useState(data);
-  const [pagination, setPagination] = useState(1);
+  const [pagination, setPagination] = useState(19);
 
   const fetchByName = async (endpoint) => {
     const res = await (await fetch(endpoint)).json();
@@ -55,7 +55,12 @@ export default function Home({ data = [] }) {
   }, [pagination]);
 
   const handleLoadMore = () => {
-    setPagination(pagination + 1);
+    console.log(pagination);
+    if (pagination >= 20) {
+      setPagination(1);
+    } else {
+      setPagination(pagination + 1);
+    }
   };
 
   return (
