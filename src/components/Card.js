@@ -1,13 +1,11 @@
 import React from 'react';
-import { CardItem } from '../styles/components/Card';
-import { CardImg } from '../styles/components/CardImg';
+import { CardItem, CardImg, CardName } from '../styles/components/Card';
 
 const Card = ({ PicUrl, Name }) => {
-  console.log();
   return (
     <CardItem>
       <CardImg src={PicUrl} alt={Name} />
-      <p>{Name}</p>
+      <CardName>{Name}</CardName>
     </CardItem>
   );
 };
