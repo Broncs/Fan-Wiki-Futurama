@@ -5,7 +5,7 @@ import { Container } from '../styles/components/Container';
 import { Form, LoadMoreButton, Logo, Title } from '../styles/pages/Home';
 
 //futuramaapi.herokuapp.com/api/v2/characters/?page=21
-const defaultEndPoint = `http://futuramaapi.herokuapp.com/api/v2/characters`;
+const defaultEndPoint = `https://futuramaapi.herokuapp.com/api/v2/characters`;
 
 export async function getServerSideProps() {
   const res = await fetch(defaultEndPoint);
@@ -46,7 +46,7 @@ export default function Home({ data = [] }) {
     if (pagination === 1) return;
     const fetchMore = async () => {
       const data = await fetch(
-        `http://futuramaapi.herokuapp.com/api/v2/characters/?page=${pagination}`
+        `https://futuramaapi.herokuapp.com/api/v2/characters/?page=${pagination}`
       );
       const res = await data.json();
       setResults(res);
