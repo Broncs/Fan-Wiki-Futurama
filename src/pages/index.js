@@ -20,7 +20,7 @@ export async function getServerSideProps() {
 
 export default function Home({ data = [] }) {
   const [results, setResults] = useState(data);
-  const [pagination, setPagination] = useState(19);
+  const [pagination, setPagination] = useState(1);
 
   const fetchByName = async (endpoint) => {
     const res = await (await fetch(endpoint)).json();

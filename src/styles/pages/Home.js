@@ -44,6 +44,7 @@ export const LoadMoreButton = styled.button`
   padding: 0.5rem 1rem;
   background-color: orange;
   margin: 3rem 0;
+  color: #fff;
   cursor: pointer;
   border: none;
 
