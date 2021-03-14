@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Cards from '../components/Cards';
 import { Container } from '../styles/components/Container';
 import { Form, LoadMoreButton, Logo, Title } from '../styles/pages/Home';
+import { SyncLoader } from 'react-spinners/';
 
 //futuramaapi.herokuapp.com/api/v2/characters/?page=21
 const defaultEndPoint = `https://futuramaapi.herokuapp.com/api/v2/characters`;
@@ -21,6 +22,7 @@ export async function getServerSideProps() {
 export default function Home({ data = [] }) {
   const [results, setResults] = useState(data);
   const [pagination, setPagination] = useState(1);
+  const [status, setStatus] = useState('resolved');
 
   const fetchByName = async (endpoint) => {
     const res = await (await fetch(endpoint)).json();
@@ -44,18 +46,24 @@ export default function Home({ data = [] }) {
 
   useEffect(() => {
     if (pagination === 1) return;
+    setStatus('pending');
+
     const fetchMore = async () => {
-      const data = await fetch(
-        `https://futuramaapi.herokuapp.com/api/v2/characters/?page=${pagination}`
-      );
-      const res = await data.json();
-      setResults(res);
+      try {
+        const data = await fetch(
+          `https://futuramaapi.herokuapp.com/api/v2/characters/?page=${pagination}`
+        );
+        const res = await data.json();
+        setResults(res);
+        setStatus('resolved');
+      } catch (error) {
+        setStatus('rejected');
+      }
     };
     fetchMore();
   }, [pagination]);
 
   const handleLoadMore = () => {
-    console.log(pagination);
     if (pagination >= 20) {
       setPagination(1);
     } else {
@@ -82,7 +90,13 @@ export default function Home({ data = [] }) {
           <button>Search</button>
         </Form>
 
-        <Cards data={results} />
+        {status === 'pending' && (
+          <div style={{ margin: '2rem' }}>
+            <SyncLoader loading size={20} />
+          </div>
+        )}
+        {status === 'resolved' && <Cards data={results} />}
+
         <LoadMoreButton onClick={handleLoadMore}>Load more</LoadMoreButton>
       </Container>
     </div>

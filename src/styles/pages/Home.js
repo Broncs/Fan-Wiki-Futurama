@@ -19,6 +19,8 @@ export const Logo = styled.div`
 `;
 
 export const Form = styled.form`
+  margin: 1rem 0;
+
   input {
     margin-right: 0.5rem;
     padding: 0.3rem 1rem;
